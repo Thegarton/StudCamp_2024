@@ -61,9 +61,9 @@ class Power():
 		elif (350 < vol < 370) or (720 < vol < 770) or (1080 < vol < 1120):  	# 30-70% 6 led orange
 			rgb.set_ledgroup(cfg.POWER_LIGHT, 6, cfg.COLOR['orange'])
 			cfg.POWER = 2		# 电量档位值设置为2
-		elif (340 < vol < 350) or (680 < vol < 730) or (1040 < vol < 1080):  	# 10-30% 2 led green
+		elif (340 < vol < 350) or (680 < vol < 730) or (1040 < vol < 1080):  	# 10-30% 2 led red
 			rgb.set_ledgroup(cfg.POWER_LIGHT, 2, cfg.COLOR['red'])
 			cfg.POWER = 1		# 电量档位值设置为1
-		elif (vol < 340) or (vol < 680) or (vol < 1040):  # <10% 1 led green
+		elif (vol < 340) or (vol < 680) or (vol < 1040):  # <10% 1 led red
 			rgb.set_ledgroup(cfg.POWER_LIGHT, 1, cfg.COLOR['red'])
 			cfg.POWER = 0		# 电量档位值设置为0
