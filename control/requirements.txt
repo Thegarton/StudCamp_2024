@@ -1,0 +1,10 @@
+socket
+numpy
+RPi
+configparser
+builtins
+os
+pyzbar
+smbus
+Adafruit_SSD1306
+pillow
