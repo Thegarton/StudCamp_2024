@@ -47,8 +47,8 @@ from im_power import Power
 power = Power()
 from im_servo import Servo
 servo = Servo()
-# from xr_ps2 import PS2
-# ps2 = PS2()
+from im_ps2 import PS2
+ps2 = PS2()
 from im_i2c import I2c
 i2c = I2c()
 # from xr_voice import Voice
