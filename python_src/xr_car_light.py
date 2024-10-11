@@ -146,3 +146,5 @@ class Car_light(object):
 				self.set_led(cfg.CAR_LIGHT, i + 1, cfg.COLOR['black'])
 				self.set_led(cfg.CAR_LIGHT, 8 - i, cfg.COLOR['black'])
 				time.sleep(0.05)
+	def set_color_car_light(self, color):
+		self.set_ledgroup(cfg.CAR_LIGHT, 8, cfg.COLOR[color])
