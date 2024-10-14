@@ -239,7 +239,7 @@ if __name__ == '__main__':
 
 	servo.restore()  		# 复位舵机
 	try:
-		oled.disp_default()		# oled显示初始化信息
+		#oled.disp_default()		# oled显示初始化信息
 	except:
 		print('oled initialization fail')
 car_light.init_led() 	# 车灯秀
@@ -262,7 +262,7 @@ path_sh = 'sh ' + os.path.split(os.path.abspath(__file__))[0] + '/start_mjpg_str
 call("%s" % path_sh, shell=True)  # 新开一个进程运行start_mjpg_streamer
 time.sleep(1)
 
-car_light.set_color_car_light('green')
+#car_light.set_color_car_light('green')
 
 for t in threads:
 	#print("theads %s ready to start..." % t)
