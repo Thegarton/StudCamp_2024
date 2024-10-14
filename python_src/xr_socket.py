@@ -315,6 +315,9 @@ class Socket:
 				beet3 = buffer[2]
 				beep.tone(beep.tone_all[cfg.TUNE][beet3 + 7], 0.5)
 
+		elif buffer[0] == 0x45:
+			go.forward_with_angle(buffer[1],buffer[2])
+
 		elif buffer == [0xef, 0xef, 0xee]:
 			print("Heartbeat Packet!")
 
