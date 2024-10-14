@@ -132,15 +132,17 @@ class RobotDirection(object):
 		self.m3m4_stop()
 
 	def forward_with_angle(self, speed, angle): 
-	
-		angle = min(180, angle) 
-		angle = max(-180, angle) 
+
+		angle = angle-100
+
+		angle = min(100, angle)
+		angle = max(-100, angle)
 		
-		speed2 = round(speed*(1-abs(angle)/90)) 
+		speed2 = round(speed*(1-abs(angle)/50))
 		
 		if angle > 0: 
-			self.set_speed(1, speed) # left 
-			self.set_speed(2, abs(speed2)) # right 
+			self.set_speed(2, speed) # left
+			self.set_speed(1, abs(speed2)) # right
 			
 			self.m3m4_reverse() # left? 
 			if speed2>0: 
@@ -149,8 +151,8 @@ class RobotDirection(object):
 				self.m1m2_forward() # right? 
 		
 		else: 
-			self.set_speed(1, abs(speed2)) # left 
-			self.set_speed(2, speed) # right 
+			self.set_speed(2, abs(speed2)) # left
+			self.set_speed(1, speed) # right
 			
 			self.m1m2_reverse() # right? 
 			if speed2>0: 
