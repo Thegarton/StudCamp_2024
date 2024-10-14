@@ -129,12 +129,12 @@ class Car_light(object):
 		启动状态车灯
 		:return:
 		"""
-		self.set_ledgroup(cfg.CAR_LIGHT, 8, cfg.COLOR['black'])
+		self.set_ledgroup(cfg.CAR_LIGHT, 8, cfg.COLOR['red'])
 		for j in range(8):
 			for i in range(8):
 				self.set_led(cfg.CAR_LIGHT, i + 1, j + 1)
 				time.sleep(0.05)
-				self.set_ledgroup(cfg.CAR_LIGHT, 8, cfg.COLOR['black'])
+				self.set_ledgroup(cfg.CAR_LIGHT, 8, cfg.COLOR['red'])
 				time.sleep(0.05)
 
 			for i in range(4):
@@ -143,8 +143,8 @@ class Car_light(object):
 				time.sleep(0.05)
 
 			for i in range(4):
-				self.set_led(cfg.CAR_LIGHT, i + 1, cfg.COLOR['black'])
-				self.set_led(cfg.CAR_LIGHT, 8 - i, cfg.COLOR['black'])
+				self.set_led(cfg.CAR_LIGHT, i + 1, cfg.COLOR['red'])
+				self.set_led(cfg.CAR_LIGHT, 8 - i, cfg.COLOR['red'])
 				time.sleep(0.05)
 	def set_color_car_light(self, color):
 		self.set_ledgroup(cfg.CAR_LIGHT, 8, cfg.COLOR[color])
