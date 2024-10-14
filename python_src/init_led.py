@@ -12,5 +12,6 @@ car_light = Car_light()
 
 
 while True:
-    car_light.set_color_car_light('green')
+    car_light.init_led()
+    #car_light.set_color_car_light('green')
     time.sleep(5)
