@@ -322,11 +322,11 @@ class Socket:
 
 		elif buffer[0] == 0x46:
 			if buffer[1] == 0x00:
-				infr.get_data("l")
+				self.sendbuf(infr.get_data("l"))
 			elif buffer[1] == 0x01:
-				infr.get_data("m")
+				self.sendbuf(infr.get_data("m"))
 			elif buffer[1] == 0x02:
-				infr.get_data("r")
+				self.sendbuf(infr.get_data("r"))
 
 
 		elif buffer == [0xef, 0xef, 0xee]:

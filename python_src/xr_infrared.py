@@ -91,8 +91,8 @@ class Infrared(object):
 
 	def get_data(self, side):
 		if side=="l":
-			print(gpio.digital_read(gpio.IRF_L))
+			return gpio.digital_read(gpio.IRF_L)
 		elif side=="m":
-			print(gpio.digital_read(gpio.IRF_M))
+			return gpio.digital_read(gpio.IRF_M)
 		elif side=="r":
-			print(gpio.digital_read(gpio.IRF_R))
+			return gpio.digital_read(gpio.IRF_R)
