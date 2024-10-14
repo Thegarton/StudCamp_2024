@@ -239,7 +239,7 @@ if __name__ == '__main__':
 
 	servo.restore()  		# 复位舵机
 	try:
-		#oled.disp_default()		# oled显示初始化信息
+		oled.disp_default()		# oled显示初始化信息
 	except:
 		print('oled initialization fail')
 car_light.init_led() 	# 车灯秀
