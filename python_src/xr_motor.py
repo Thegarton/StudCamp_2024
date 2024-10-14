@@ -1,17 +1,17 @@
 """
-树莓派WiFi无线视频小车机器人驱动源码
-作者：Sence
-版权所有：小R科技（深圳市小二极客科技有限公司www.xiao-r.com）；WIFI机器人网论坛 www.wifi-robots.com
-本代码可以自由修改，但禁止用作商业盈利目的！
-本代码已申请软件著作权保护，如有侵权一经发现立即起诉！
+Исходный код для управления роботом с видео на Raspberry Pi через WiFi
+Автор: Sence
+Авторские права: XiaoR Technology (Shenzhen XiaoErGeek Technology Co., Ltd. www.xiao-r.com); Форум WiFi Robot Network www.wifi-robots.com
+Этот код можно свободно изменять, но запрещено использовать его в коммерческих целях!
+Код защищен авторским правом на программное обеспечение, при обнаружении нарушения будет подан иск!
 """
 """
 @version: python3.7
 @Author  : xiaor
-@Explain :电机控制
+@Explain : Управление двигателем
 @contact :
-@Time    :2020/05/09
-@File    :xr_motor.py
+@Time    : 2020/05/09
+@File    : xr_motor.py
 @Software: PyCharm
 """
 from builtins import float, object
@@ -31,19 +31,20 @@ class RobotDirection(object):
 
 	def set_speed(self, num, speed):
 		"""
-		设置电机速度，num表示左侧还是右侧，等于1表示左侧，等于右侧，speed表示设定的速度值（0-100）
+		Установить скорость двигателя, num указывает на левую или правую сторону, 1 - левая, 2 - правая, 
+		speed указывает на заданное значение скорости (0-100)
 		"""
 		# print(speed)
-		if num == 1:  # 调节左侧
+		if num == 1:  # Регулировка левой стороны
 			gpio.ena_pwm(speed)
-		elif num == 2:  # 调节右侧
+		elif num == 2:  # Регулировка правой стороны
 			gpio.enb_pwm(speed)
 
 	def motor_init(self):
 		"""
-		获取机器人存储的速度
+		Получить сохранённую скорость робота
 		"""
-		print("获取机器人存储的速度")
+		print("Получение сохранённой скорости робота")
 		speed = cfgparser.get_data('motor', 'speed')
 		cfg.LEFT_SPEED = speed[0]
 		cfg.RIGHT_SPEED = speed[1]
@@ -51,44 +52,47 @@ class RobotDirection(object):
 		print(speed[1])
 
 	def save_speed(self):
+		"""
+		Сохранить текущую скорость двигателя
+		"""
 		speed = [0, 0]
 		speed[0] = cfg.LEFT_SPEED
 		speed[1] = cfg.RIGHT_SPEED
 		cfgparser.save_data('motor', 'speed', speed)
 
 	def m1m2_forward(self):
-		# 设置电机组M1、M2正转
+		# Установить прямое вращение двигателей M1 и M2
 		gpio.digital_write(gpio.IN1, True)
 		gpio.digital_write(gpio.IN2, False)
 
 	def m1m2_reverse(self):
-		# 设置电机组M1、M2反转
+		# Установить обратное вращение двигателей M1 и M2
 		gpio.digital_write(gpio.IN1, False)
 		gpio.digital_write(gpio.IN2, True)
 
 	def m1m2_stop(self):
-		# 设置电机组M1、M2停止
+		# Остановить двигатели M1 и M2
 		gpio.digital_write(gpio.IN1, False)
 		gpio.digital_write(gpio.IN2, False)
 
 	def m3m4_forward(self):
-		# 设置电机组M3、M4正转
+		# Установить прямое вращение двигателей M3 и M4
 		gpio.digital_write(gpio.IN3, True)
 		gpio.digital_write(gpio.IN4, False)
 
 	def m3m4_reverse(self):
-		# 设置电机组M3、M4反转
+		# Установить обратное вращение двигателей M3 и M4
 		gpio.digital_write(gpio.IN3, False)
 		gpio.digital_write(gpio.IN4, True)
 
 	def m3m4_stop(self):
-		# 设置电机组M3、M4停止
+		# Остановить двигатели M3 и M4
 		gpio.digital_write(gpio.IN3, False)
 		gpio.digital_write(gpio.IN4, False)
 
 	def back(self):
 		"""
-		设置机器人运动方向为前进
+		Установить направление движения робота на вперед
 		"""
 		self.set_speed(1, cfg.LEFT_SPEED)
 		self.set_speed(2, cfg.RIGHT_SPEED)
@@ -97,7 +101,7 @@ class RobotDirection(object):
 
 	def forward(self):
 		"""
-		#设置机器人运动方向为后退
+		Установить направление движения робота на назад
 		"""
 		self.set_speed(1, cfg.LEFT_SPEED)
 		self.set_speed(2, cfg.RIGHT_SPEED)
@@ -106,7 +110,7 @@ class RobotDirection(object):
 
 	def left(self):
 		"""
-		#设置机器人运动方向为左转
+		Установить направление движения робота на поворот налево
 		"""
 		self.set_speed(1, cfg.LEFT_SPEED)
 		self.set_speed(2, cfg.RIGHT_SPEED)
@@ -115,7 +119,7 @@ class RobotDirection(object):
 
 	def right(self):
 		"""
-		#设置机器人运动方向为右转
+		Установить направление движения робота на поворот направо
 		"""
 		self.set_speed(1, cfg.LEFT_SPEED)
 		self.set_speed(2, cfg.RIGHT_SPEED)
@@ -124,15 +128,17 @@ class RobotDirection(object):
 
 	def stop(self):
 		"""
-		#设置机器人运动方向为停止
+		Установить направление движения робота на остановку
 		"""
 		self.set_speed(1, 0)
 		self.set_speed(2, 0)
 		self.m1m2_stop()
 		self.m3m4_stop()
 
-	def forward_with_angle(self, speed, angle): 
-
+	def forward_with_angle(self, speed, angle):
+		"""
+		Установить движение вперед с углом
+		"""
 		angle = angle-100
 
 		angle = min(100, angle)
@@ -141,21 +147,21 @@ class RobotDirection(object):
 		speed2 = round(speed*(1-abs(angle)/50))
 		
 		if angle > 0: 
-			self.set_speed(2, speed) # left
-			self.set_speed(1, abs(speed2)) # right
+			self.set_speed(2, speed)  # левая сторона
+			self.set_speed(1, abs(speed2))  # правая сторона
 			
-			self.m3m4_reverse() # left? 
-			if speed2>0: 
-				self.m1m2_reverse() # right? 
+			self.m3m4_reverse()  # левая сторона? 
+			if speed2 > 0: 
+				self.m1m2_reverse()  # правая сторона? 
 			else: 
-				self.m1m2_forward() # right? 
+				self.m1m2_forward()  # правая сторона? 
 		
 		else: 
-			self.set_speed(2, abs(speed2)) # left
-			self.set_speed(1, speed) # right
+			self.set_speed(2, abs(speed2))  # левая сторона
+			self.set_speed(1, speed)  # правая сторона
 			
-			self.m1m2_reverse() # right? 
-			if speed2>0: 
-				self.m3m4_reverse() # left? 
+			self.m1m2_reverse()  # правая сторона? 
+			if speed2 > 0: 
+				self.m3m4_reverse()  # левая сторона? 
 			else: 
-				self.m3m4_forward() # left?
+				self.m3m4_forward()  # левая сторона?
