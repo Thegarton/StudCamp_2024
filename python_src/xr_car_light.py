@@ -56,7 +56,6 @@ class Car_light(object):
 			i2c.writedata(i2c.mcu_address, sendbuf)
 			time.sleep(0.005)
 		# print("set_led group%d, LED%d, color%d  :OK \r\n", group, count, color)
-
 	def open_light(self):
 		"""
 		全车灯打开
@@ -65,22 +64,20 @@ class Car_light(object):
 		# print("车灯全部打开")
 		self.set_ledgroup(cfg.CAR_LIGHT, 8, cfg.COLOR['white'])
 		time.sleep(0.01)
-
 	def close_light(self):
 		"""
 		全车灯关闭
 		:return:
 		"""
 		# print("车灯全部关闭")
-		self.set_ledgroup(cfg.CAR_LIGHT, 8, cfg.COLOR['black'])
+		#self.set_ledgroup(cfg.CAR_LIGHT, 8, cfg.COLOR['black'])
 		time.sleep(0.01)
-
 	def left_turn_light(self):
 		"""
 		左转流水灯
 		:return:
 		"""
-		# print("左转")
+		print("左转")
 		self.set_led(cfg.CAR_LIGHT, 6, cfg.COLOR['red'])
 		time.sleep(0.12)
 		self.set_led(cfg.CAR_LIGHT, 7, cfg.COLOR['red'])
@@ -89,7 +86,6 @@ class Car_light(object):
 		time.sleep(0.12)
 		self.set_ledgroup(cfg.CAR_LIGHT, 8, cfg.COLOR['black'])
 		time.sleep(0.12)
-
 	def right_turn_light(self):
 		"""
 		右转流水灯
@@ -103,7 +99,6 @@ class Car_light(object):
 		time.sleep(0.12)
 		self.set_ledgroup(cfg.CAR_LIGHT, 8, cfg.COLOR['black'])
 		time.sleep(0.12)
-
 	def forward_turn_light(self):
 		self.set_led(cfg.CAR_LIGHT, 3, cfg.COLOR['green'])
 		time.sleep(0.05)
@@ -113,7 +108,6 @@ class Car_light(object):
 		time.sleep(0.05)
 		self.set_led(cfg.CAR_LIGHT, 6, cfg.COLOR['green'])
 		time.sleep(0.12)
-
 	def back_turn_light(self):
 		self.set_led(cfg.CAR_LIGHT, 3, cfg.COLOR['red'])
 		time.sleep(0.05)
@@ -123,7 +117,6 @@ class Car_light(object):
 		time.sleep(0.05)
 		self.set_led(cfg.CAR_LIGHT, 6, cfg.COLOR['red'])
 		time.sleep(0.12)
-
 	def init_led(self):
 		"""
 		启动状态车灯

@@ -143,8 +143,9 @@ class Oled():
 		# Write two lines of text.
 		self.draw_row_column(1, 0, "eth0: " + str(self.get_ip_address('eth0')))
 		self.draw_row_column(2, 0, "wlan0: " + str(self.get_ip_address('wlan0')))
-		self.draw_row_column(3, 0, str(MemUsage.decode('utf-8')))
-		self.draw_row_column(4, 0, str(Disk.decode('utf-8')))
+		self.draw_row_column(3, 0, "wlan1: " + str(self.get_ip_address('wlan1')))
+		self.draw_row_column(4, 0, str(MemUsage.decode('utf-8')))
+		self.draw_row_column(5, 0, str(Disk.decode('utf-8')))
 
 		# Display image.
 

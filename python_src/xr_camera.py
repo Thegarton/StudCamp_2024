@@ -67,7 +67,7 @@ class Camera(object):
             if self.cap_open == 0:  # 摄像头没有打开
                 try:
                     # self.cap = cv2.VideoCapture(0) # 打开摄像头
-                    self.cap = cv2.VideoCapture('http://127.0.0.1:8080/?action=stream')
+                    self.cap = cv2.VideoCapture("dev/video2")
                 except Exception as e:
                     print('opencv camera open error:', e)
                 self.cap_open = 1  # 标志置1
