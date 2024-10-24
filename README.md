@@ -57,7 +57,7 @@ python src/detection/detect_object.py --input путь/к/изображению
 python src/control/follow2object.py
 ```
 
-### Выравнивание по линиями
+### Выравнивание по линиям
 
 ![](https://github.com/Thegarton/StudCamp_2024/blob/main/it%20worked1.gif)
 
