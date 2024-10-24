@@ -56,6 +56,11 @@ python src/detection/detect_object.py --input путь/к/изображению
 ```bash
 python src/control/follow2object.py
 ```
+
+### Выравнивание по линиями
+
+![](https://github.com/Thegarton/StudCamp_2024/blob/main/it%20worked1.gif)
+
 ### Настройка
 
 Некоторые скрипты поддерживают настройку через аргументы командной строки. Вы можете указывать различные параметры, такие как вход с камеры, пути к моделям или гиперпараметры.
